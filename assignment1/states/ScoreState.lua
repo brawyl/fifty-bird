@@ -30,14 +30,24 @@ function ScoreState:render()
     silverScore = 4
     goldScore = 6
     scoreString = 'Oof! You lost!'
+    imagePath = 'bird.png'
 
     if self.score >= goldScore then
-        scoreString = 'Congrats! You got a gold medal.'
+        scoreString = 'You got a gold medal!'
+        imagePath = 'medal_gold.png'
     elseif self.score >= silverScore then
-        scoreString = 'Congrats! You got a silver medal.'
+        scoreString = 'You got a silver medal!'
+        imagePath = 'medal_silver.png'
     elseif self.score >= bronzeScore then
-        scoreString = 'Congrats! You got a bronze medal.'
+        scoreString = 'You got a bronze medal!'
+        imagePath = 'medal_bronze.png'
     end
+
+    -- draw the medal in the center of the screen
+    medalImage = love.graphics.newImage(imagePath)
+    imageWidth = medalImage:getWidth()
+    imageHeight = medalImage:getHeight()
+    love.graphics.draw(medalImage, (VIRTUAL_WIDTH / 2) - (imageWidth / 2), 180)
 
     -- simply render the score to the middle of the screen
     love.graphics.setFont(flappyFont)
