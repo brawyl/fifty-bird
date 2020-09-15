@@ -23,10 +23,13 @@ function PipePair:init(y)
     -- y value is for the topmost pipe; gap is a vertical shift of the second lower pipe
     self.y = y
 
+    -- Randomize the gap between pipes (vertical space), such that they’re no longer hardcoded to 90 pixels.
+    randomHeight = GAP_HEIGHT + (math.random(-20, 40))
+
     -- instantiate two pipes that belong to this pair
     self.pipes = {
         ['upper'] = Pipe('top', self.y),
-        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + GAP_HEIGHT)
+        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + randomHeight)
     }
 
     -- whether this pipe pair is ready to be removed from the scene
