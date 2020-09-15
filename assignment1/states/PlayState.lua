@@ -35,8 +35,6 @@ function PlayState:update(dt)
 
     -- spawn a new pipe pair every pipe interval value
     if self.timer > self.pipeInterval then
-        print(self.pipeInterval)
-
         -- modify the last Y coordinate we placed so pipe gaps aren't too far apart
         -- no higher than 10 pixels below the top edge of the screen,
         -- and no lower than a gap length (90 pixels) from the bottom

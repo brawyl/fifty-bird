@@ -26,9 +26,22 @@ function ScoreState:update(dt)
 end
 
 function ScoreState:render()
+    bronzeScore = 2
+    silverScore = 4
+    goldScore = 6
+    scoreString = 'Oof! You lost!'
+
+    if self.score >= goldScore then
+        scoreString = 'Congrats! You got a gold medal.'
+    elseif self.score >= silverScore then
+        scoreString = 'Congrats! You got a silver medal.'
+    elseif self.score >= bronzeScore then
+        scoreString = 'Congrats! You got a bronze medal.'
+    end
+
     -- simply render the score to the middle of the screen
     love.graphics.setFont(flappyFont)
-    love.graphics.printf('Oof! You lost!', 0, 64, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf(scoreString, 0, 64, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setFont(mediumFont)
     love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
